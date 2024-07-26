@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://du65dj4l02mff"]
+
+[ext_resource type="PackedScene" uid="uid://bewgvua06bquf" path="res://scenes/floor.tscn" id="1_sxksi"]
+[ext_resource type="PackedScene" uid="uid://dj1ve85ridjbd" path="res://scenes/falling_box.tscn" id="2_kt5b4"]
+[ext_resource type="PackedScene" uid="uid://cs8nlsal0kejw" path="res://scenes/player.tscn" id="3_oxouu"]
+
+[node name="Level1" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.969757, 0.244072, 0, -0.244072, 0.969757, -0.232882, 1.45245, 2.91582)
+fov = 43.0
+
+[node name="Floor" parent="." instance=ExtResource("1_sxksi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.271906, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.51408, 0.857742, 0, -0.857742, 0.51408, 0, 7.1325, 5.98333)
+shadow_enabled = true
+
+[node name="Blocks" type="Node3D" parent="."]
+
+[node name="FallingBox" parent="Blocks" instance=ExtResource("2_kt5b4")]
+transform = Transform3D(0.729661, 0.438318, 0.524854, -0.683809, 0.467709, 0.560048, 0, -0.767546, 0.640994, 1, 6.48054, -1.80375)
+
+[node name="FallingBox2" parent="Blocks" instance=ExtResource("2_kt5b4")]
+transform = Transform3D(0.729661, 0.438318, 0.524854, -0.683809, 0.467709, 0.560048, 0, -0.767546, 0.640994, -0.418499, 5.33422, -2.8192)
+
+[node name="FallingBox3" parent="Blocks" instance=ExtResource("2_kt5b4")]
+transform = Transform3D(0.729661, 0.438318, 0.524854, -0.532679, 0.84562, 0.0343425, -0.428775, -0.304637, 0.850499, -0.418499, 5.21133, -0.908537)
+
+[node name="Player" parent="." instance=ExtResource("3_oxouu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20095, -0.0333152)
