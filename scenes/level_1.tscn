@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://du65dj4l02mff"]
+[gd_scene load_steps=5 format=3 uid="uid://du65dj4l02mff"]
 
 [ext_resource type="PackedScene" uid="uid://bewgvua06bquf" path="res://scenes/floor.tscn" id="1_sxksi"]
 [ext_resource type="PackedScene" uid="uid://dj1ve85ridjbd" path="res://scenes/falling_box.tscn" id="2_kt5b4"]
 [ext_resource type="PackedScene" uid="uid://cs8nlsal0kejw" path="res://scenes/player.tscn" id="3_oxouu"]
+[ext_resource type="PackedScene" uid="uid://r0ung3j7ie2e" path="res://scenes/sea.tscn" id="4_6g3x6"]
 
 [node name="Level1" type="Node3D"]
 
@@ -12,10 +13,6 @@ fov = 43.0
 
 [node name="Floor" parent="." instance=ExtResource("1_sxksi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.271906, 0)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.51408, 0.857742, 0, -0.857742, 0.51408, 0, 7.1325, 5.98333)
-shadow_enabled = true
 
 [node name="Blocks" type="Node3D" parent="."]
 
@@ -30,3 +27,13 @@ transform = Transform3D(0.729661, 0.438318, 0.524854, -0.532679, 0.84562, 0.0343
 
 [node name="Player" parent="." instance=ExtResource("3_oxouu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20095, -0.0333152)
+
+[node name="Sea" parent="." instance=ExtResource("4_6g3x6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4279, 0.613165, 0.885691)
+light_color = Color(0.952941, 0.611765, 0.305882, 1)
+light_indirect_energy = 1.539
+light_volumetric_fog_energy = 4.596
+light_specular = 3.017
