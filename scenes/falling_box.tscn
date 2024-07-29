@@ -1,4 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dj1ve85ridjbd"]
+[gd_scene load_steps=5 format=3 uid="uid://dj1ve85ridjbd"]
+
+[ext_resource type="Shader" path="res://scenes/falling_box.gdshader" id="1_f8n44"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jp48h"]
+render_priority = 0
+shader = ExtResource("1_f8n44")
 
 [sub_resource type="BoxMesh" id="BoxMesh_hw2yn"]
 
@@ -7,6 +13,7 @@
 [node name="FallingBox" type="RigidBody3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_jp48h")
 mesh = SubResource("BoxMesh_hw2yn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
