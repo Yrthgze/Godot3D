@@ -31,8 +31,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20095, -0.0333152)
 [node name="Sea" parent="." instance=ExtResource("4_6g3x6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 0)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1844, 1.29607, -0.112439)
-light_indirect_energy = 1.539
-light_volumetric_fog_energy = 4.596
-light_specular = 3.017
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.203488, 0.979077, 0, -0.979077, 0.203488, 0, 82.6903, 55)
+light_energy = 3.067
+light_indirect_energy = 2.348
+light_volumetric_fog_energy = 3.056
