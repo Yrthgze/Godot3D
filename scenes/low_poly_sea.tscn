@@ -1,19 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://crq6b848krjhx"]
+[gd_scene load_steps=8 format=3 uid="uid://crq6b848krjhx"]
 
 [ext_resource type="Shader" path="res://scenes/lowpoly_sea.gdshader" id="1_lj013"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_0fwpe"]
-noise_type = 3
-frequency = 0.0038
-offset = Vector3(0, 680, 0)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_thul4"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6w2m0"]
-noise = SubResource("FastNoiseLite_0fwpe")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0ig5f"]
+noise = SubResource("FastNoiseLite_thul4")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_s4kve"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ricol"]
+as_normal_map = true
+noise = SubResource("FastNoiseLite_s4kve")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1o8vv"]
 render_priority = 0
 shader = ExtResource("1_lj013")
-shader_parameter/noise = SubResource("NoiseTexture2D_6w2m0")
+shader_parameter/f_wave_speed = 1.0
+shader_parameter/noise = SubResource("NoiseTexture2D_0ig5f")
+shader_parameter/normalmap = SubResource("NoiseTexture2D_ricol")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dp5ul"]
 material = SubResource("ShaderMaterial_1o8vv")
@@ -22,6 +27,7 @@ subdivide_width = 30
 subdivide_depth = 30
 
 [node name="LowPolySea" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_dp5ul")
