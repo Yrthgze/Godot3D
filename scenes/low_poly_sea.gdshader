@@ -4,7 +4,7 @@ uniform sampler2D DEPTH_TEXTURE : hint_depth_texture, filter_linear_mipmap;
 // Water color
 uniform vec4 out_color: source_color = vec4(0.0, 0.2, 1.0, 1.0);
 // Amount of height for each triangle
-uniform float amount: hint_range(0.2, 5.0, 0.1) = 0.8;
+uniform float amount: hint_range(0.2, 5.0, 0.01) = 0.8;
 // The speed of the trangles height change
 uniform float speed: hint_range(0.1, 5.0, 0.1) = 1;
 // Beer factor (used to calculate how transparent the water is going to be) if equals to 0.0 then the alpha is going to be the out_color's alpha
@@ -12,6 +12,7 @@ uniform float beer_factor = 0.2;
 uniform float metallic = 0.6;
 uniform float specular = 0.5;
 uniform float roughness = 0.2;
+uniform float wave_time = 0.0;
 
 float generateOffset(float x, float z, float val1, float val2, float time) {
 	float radiansX = ((mod(x + z * x * val1, amount) / amount) + (time * speed) * mod(x * 0.8 + z, 1.5)) * 2.0 * 3.14;
@@ -29,7 +30,12 @@ vec3 applyDistortion(vec3 vertex, float time) {
 }
 
 void vertex() {
-	VERTEX = applyDistortion(VERTEX, TIME * 0.1);
+	float real_time = wave_time;
+	if(real_time < 0.1)
+	{
+		real_time = TIME;
+	}
+	VERTEX = applyDistortion(VERTEX, real_time * 0.1);
 }
 
 void fragment() {
